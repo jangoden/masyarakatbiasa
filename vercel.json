@@ -1,16 +1,17 @@
 {
   "rewrites": [
     {
-      "source": "/blog/:slug",
-      "destination": "/api/blog-og?slug=:slug"
+      "source": "/blog/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i)(facebookexternalhit|whatsapp|twitterbot|bot|crawler|spider)"
+        }
+      ],
+      "destination": "/api/blog-og?slug=$1"
     },
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
