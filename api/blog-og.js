@@ -7,7 +7,6 @@ export default async function handler(req, res) {
   if (!slug) return res.status(400).send("Bad request");
 
   try {
-    // Fetch post dari Supabase REST API
     const url = `${
       process.env.VITE_SUPABASE_URL
     }/rest/v1/posts?select=title,cover_image_url,slug&slug=eq.${encodeURIComponent(
@@ -31,11 +30,11 @@ export default async function handler(req, res) {
     const image = post.cover_image_url || `${site}/og-default.png`;
 
     if (!isBot) {
-      // User biasa → redirect ke SPA
-      return res.redirect(302, `/?post=${encodeURIComponent(post.slug)}`);
+      // User biasa → kembali ke SPA
+      return res.redirect(302, postUrl);
     }
 
-    // Bot → render HTML dengan meta tag OG
+    // Bot → kirim meta tag
     const html = `<!doctype html>
 <html lang="en">
 <head>
