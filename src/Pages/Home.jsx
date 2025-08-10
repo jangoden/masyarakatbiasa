@@ -145,7 +145,7 @@ const Home = () => {
                   </span>
                   <span className="w-[3px] h-6 bg-gradient-to-t from-[#6366f1] to-[#a855f7] ml-1 animate-blink"></span>
                 </div>
-                <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light text-justify"
+                <p className="italic text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light text-justify"
                   data-aos="fade-up"
                   data-aos-delay="1000">
                   "I am just an ordinary member of society, yet driven by a strong will to become a better person. For me, life is not only about self-improvement, but also about making a difference for others. As long as I am able, I will keep moving forward, helping, and contributing to the greater good."
