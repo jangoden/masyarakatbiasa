@@ -2,8 +2,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import React, { useState } from 'react';
 import "./index.css";
 import 'react-quill/dist/quill.snow.css';
-
-
+import DeepLinkHandler from './components/DeepLinkHandler';
 
 // Halaman utama dan komponen
 import Home from "./Pages/Home";
@@ -23,8 +22,7 @@ import LoginPage from "./Pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminDashboard from "./Pages/AdminDashboard";
 import PostsByTagPage from "./Pages/PostsByTagPage";
-import EditPost from "./Pages/EditPost"
-
+import EditPost from "./Pages/EditPost";
 
 // Komponen UI
 import AnimatedBackground from "./components/Background";
@@ -41,7 +39,7 @@ const PublicLayout = () => (
     <Navbar />
     <AnimatedBackground />
     <main>
-      <Outlet /> {/* <-- Merender halaman spesifik (MainPage, Blog, dll.) */}
+      <Outlet />
     </main>
     <footer>
       <center>
@@ -65,7 +63,7 @@ const AdminLayout = () => (
   </ProtectedRoute>
 );
 
-// Komponen yang menggabungkan semua bagian dari halaman utama/beranda
+// Halaman utama gabungan
 const MainPage = () => (
   <>
     <Home />
@@ -77,22 +75,25 @@ const MainPage = () => (
 );
 
 // =================================================================
-// KOMPONEN UTAMA APP
+// APP
 // =================================================================
-
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
 
   return (
     <BrowserRouter>
+      {/* Handler deep link */}
+      <DeepLinkHandler />
+
       <AnimatePresence mode="wait">
-        {showWelcome && <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />}
+        {showWelcome && (
+          <WelcomeScreen onLoadingComplete={() => setShowWelcome(false)} />
+        )}
       </AnimatePresence>
 
-      {/* Tampilkan sisa aplikasi setelah welcome screen selesai */}
       {!showWelcome && (
         <Routes>
-          {/* Grup Rute Publik */}
+          {/* Rute publik */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<MainPage />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
@@ -101,17 +102,17 @@ function App() {
             <Route path="/blog/tags/:tagName" element={<PostsByTagPage />} />
           </Route>
 
-          {/* Rute Login (tanpa layout publik) */}
+          {/* Rute login */}
           <Route path="/login" element={<LoginPage />} />
 
-          {/* Grup Rute Admin */}
+          {/* Rute admin */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="create" element={<CreatePost />} />
             <Route path="edit/:id" element={<EditPost />} />
           </Route>
 
-          {/* Rute 404 Not Found */}
+          {/* 404 */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
