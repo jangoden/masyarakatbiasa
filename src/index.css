@@ -1,0 +1,200 @@
+/* ================================================= */
+/* == 1. IMPORTS (WAJIB DI PALING ATAS) == */
+/* ================================================= */
+
+/* Font utama untuk situs */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* Font tambahan untuk Rich Text Editor */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ================================================= */
+/* == 2. TAILWIND DIRECTIVES == */
+/* ================================================= */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================= */
+/* == 3. STYLE DASAR & GLOBAL == */
+/* ================================================= */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(99, 102, 241, 0.3) rgba(12, 5, 53, 0.356);
+}
+
+html,
+body {
+	overflow-x: hidden;
+	background: #030014;
+	scroll-behavior: smooth !important;
+}
+
+[data-aos] {
+	will-change: transform, opacity !important;
+}
+
+/* =============================================== */
+/* == 4. STYLE UNTUK RICH TEXT EDITOR (QUIL) == */
+/* =============================================== */
+
+/* A. Format di Halaman Publik (Konten Blog) */
+.prose .ql-align-center {
+	text-align: center;
+}
+
+.prose .ql-align-right {
+	text-align: right;
+}
+.prose .ql-align-justify {
+	text-align: justify;
+}
+
+.prose blockquote {
+	border-left: 4px solid #6366f1;
+	padding-left: 1rem;
+	font-style: italic;
+	color: #a5b4fc;
+}
+
+/* B. Styling untuk label font di dalam toolbar editor */
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="jetbrains-mono"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="jetbrains-mono"]::before {
+	content: "JetBrains Mono";
+	font-family: "JetBrains Mono", monospace;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="playfair-display"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair-display"]::before {
+	content: "Playfair Display";
+	font-family: "Playfair Display", serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="roboto-slab"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto-slab"]::before {
+	content: "Roboto Slab";
+	font-family: "Roboto Slab", serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="fira-code"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="fira-code"]::before {
+	content: "Fira Code";
+	font-family: "Fira Code", monospace;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="source-code-pro"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="source-code-pro"]::before {
+	content: "Source Code Pro";
+	font-family: "Source Code Pro", monospace;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="merriweather"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="merriweather"]::before {
+	content: "Merriweather";
+	font-family: "Merriweather", serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="space-grotesk"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="space-grotesk"]::before {
+	content: "Space Grotesk";
+	font-family: "Space Grotesk", sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="ubuntu-mono"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="ubuntu-mono"]::before {
+	content: "Ubuntu Mono";
+	font-family: "Ubuntu Mono", monospace;
+}
+
+
+/* ================================================= */
+/* == 5. KUSTOMISASI SCROLLBAR == */
+/* ================================================= */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(3, 0, 20, 0.4);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(99, 102, 241, 0.3);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.2), 0 0 10px rgba(99, 102, 241, 0.2);
+	transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(99, 102, 241, 0.5);
+	border: 1px solid rgba(168, 85, 247, 0.3);
+	box-shadow: inset 0 0 30px rgba(168, 85, 247, 0.3), 0 0 15px rgba(99, 102, 241, 0.3);
+	}
+::-webkit-scrollbar-thumb:active {
+	background: rgba(99, 102, 241, 0.6);
+	border: 1px solid rgba(168, 85, 247, 0.4);
+	box-shadow: inset 0 0 40px rgba(168, 85, 247, 0.4), 0 0 20px rgba(99, 102, 241, 0.4);
+	}
+	
+	::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/* ================================================= */
+/* == 6. ANIMASI == */
+/* ================================================= */
+@keyframes blob {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+		50% {
+			transform: translateY(-20px);
+		}
+		}
+
+.animate-blob {
+	animation: blob 8s infinite;
+}
+
+@keyframes shine {
+	from {
+		left: -100%;
+	}
+
+		to {
+			left: 200%;
+		}
+		}
+
+.animate-shine {
+	animation: shine 1.5s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+	animation-delay: 2s;
+}
+.animation-delay-4000 {
+	animation-delay: 4s;
+}
