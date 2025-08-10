@@ -6,7 +6,7 @@ Let me introduce myself, I'm **deniirahman**. On this occasion, I'd like to shar
 
 ## 🚀 Live Demo
 
-**Website Link:** [https://www.eki.my.id/](https://www.eki.my.id/)
+**Website Link:** [https://www.deniirahman.my.id//](https://www.deniirahman.my.id//)
 
 ## 🛠️ Tech Stack
 
@@ -35,7 +35,7 @@ Follow these steps to run the project locally:
 ### 1\. Clone the Repository
 
 ```bash
-git clone https://github.com/EkiZR/Portofolio_V5.git
+git clone https://github.com/deniirahmanZR/Portofolio_V5.git
 cd Portofolio_V5
 ```
 
@@ -177,7 +177,7 @@ VALUES ('REPLACE_WITH_YOUR_CERTIFICATE_IMAGE_URL.png');
 
 -- Insert one example comment
 INSERT INTO public.portfolio_comments (content, user_name) 
-VALUES ('Created By deniirahman', 'ekizr');
+VALUES ('Created By deniirahman', 'deniirahmanzr');
 
 ```
 
@@ -239,8 +239,8 @@ If you have any questions or need help with the setup, feel free to reach out\!
 
 **deniirahman**
 
-  - Website: [https://www.eki.my.id/](https://www.eki.my.id/)
-  - GitHub: [EkiZR](https://github.com/EkiZR)
+  - Website: [https://www.deniirahman.my.id//](https://www.deniirahman.my.id//)
+  - GitHub: [deniirahmanZR](https://github.com/deniirahmanZR)
 
 -----
 
