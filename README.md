@@ -1,12 +1,10 @@
-# Portfolio V5
-
 Hello everyone\! 👋
 
 Let me introduce myself, I'm **deniirahman**. On this occasion, I'd like to share the portfolio website project that I've developed.
 
 ## 🚀 Live Demo
 
-**Website Link:** [https://www.deniirahman.my.id//](https://www.deniirahman.my.id//)
+**Website Link:** [https://www.deniirahman.my.id//](https://deniirahman.my.id)
 
 ## 🛠️ Tech Stack
 
@@ -239,8 +237,7 @@ If you have any questions or need help with the setup, feel free to reach out\!
 
 **deniirahman**
 
-  - Website: [https://www.deniirahman.my.id//](https://www.deniirahman.my.id//)
-  - GitHub: [deniirahmanZR](https://github.com/deniirahmanZR)
+  - Website: [https://www.deniirahman.my.id//](https://www.deniirahman.my.id)
 
 -----
 
