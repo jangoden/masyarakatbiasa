@@ -1,11 +1,12 @@
-// src/pages/BlogDetail.jsx
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { supabase } from '../supabase'; // Pastikan path ini benar
+import { supabase } from '../supabase';
 import { ArrowLeft, Tag, Calendar } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+// ✅ Tambahkan import Helmet
+import { Helmet } from 'react-helmet';
 
 const TagPill = ({ tagName }) => {
   return (
@@ -35,16 +36,12 @@ const BlogDetail = () => {
     try {
       const { data, error } = await supabase
         .from('posts')
-        .select(`
-          *,
-          tags ( id, name )
-        `) // Fetch tags along with the post
+        .select(`*, tags ( id, name )`)
         .eq('slug', slug)
         .single();
 
       if (error) throw error;
 
-      // Increment view count only if we successfully got the post
       if (data) {
         await supabase.rpc('increment_view_count', { post_id_to_update: data.id });
         setPost(data);
@@ -85,8 +82,25 @@ const BlogDetail = () => {
     );
   }
 
+  const pageUrl = `https://domainkamu.my.id/blog/${slug}`;
+
   return (
     <div className="min-h-screen bg-[#030014] text-white overflow-hidden pt-24 pb-16">
+      {/* ✅ Helmet untuk meta tags dinamis */}
+      <Helmet>
+        <title>{post.title}</title>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt || post.title} />
+        <meta property="og:image" content={post.cover_image_url} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="article" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt || post.title} />
+        <meta name="twitter:image" content={post.cover_image_url} />
+      </Helmet>
+
       <div className="max-w-4xl mx-auto px-5">
         <div data-aos="fade-down">
           <Link to="/blog" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors mb-8">
