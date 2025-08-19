@@ -23,9 +23,9 @@ const socialLinks = [
   {
     name: "Instagram",
     displayName: "Instagram",
-    subText: "@deniirahman",
+    subText: "@denirrahman",
     icon: Instagram,
-    url: "https://www.instagram.com/deniirahman",
+    url: "https://www.instagram.com/denirrahman/",
     color: "#E4405F",
     gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]",
   },

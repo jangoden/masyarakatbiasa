@@ -68,7 +68,7 @@ const WORDS = ["Informatics Student", "Tech Enthusiast", "Web Developer", "Front
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/jangoden" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/jangoden/" },
-  { icon: Instagram, link: "https://www.instagram.com/popyinss/?hl=id" }
+  { icon: Instagram, link: "https://www.instagram.com/denirrahman/" }
 ];
 
 const Home = () => {
