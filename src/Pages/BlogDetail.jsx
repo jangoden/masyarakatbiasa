@@ -104,6 +104,7 @@ const BlogDetail = () => {
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="prerender-render-delay" content="1000" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || post.title} />
         <meta name="twitter:image" content={post.cover_image_url} />
