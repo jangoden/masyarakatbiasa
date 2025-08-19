@@ -5,7 +5,7 @@ import { ArrowLeft, Tag, Calendar } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// ✅ Tambahkan import Helmet
+// ✅ Tambahkan Helmet untuk meta tag dinamis
 import { Helmet } from 'react-helmet';
 
 const TagPill = ({ tagName }) => {
@@ -45,6 +45,15 @@ const BlogDetail = () => {
       if (data) {
         await supabase.rpc('increment_view_count', { post_id_to_update: data.id });
         setPost(data);
+
+        // ✅ Tracking event Google Analytics: read_blog
+        if (window.gtag && data?.title) {
+          window.gtag('event', 'read_blog', {
+            event_category: 'Blog',
+            event_label: data.title,
+            value: 1
+          });
+        }
       }
     } catch (error) {
       console.error('Error fetching post:', error.message);
@@ -82,11 +91,11 @@ const BlogDetail = () => {
     );
   }
 
-  const pageUrl = `https://domainkamu.my.id/blog/${slug}`;
+  const pageUrl = `https://deniirahman.my.id/blog/${slug}`;
 
   return (
     <div className="min-h-screen bg-[#030014] text-white overflow-hidden pt-24 pb-16">
-      {/* ✅ Helmet untuk meta tags dinamis */}
+      {/* ✅ Helmet untuk SEO dan preview WhatsApp/Twitter */}
       <Helmet>
         <title>{post.title}</title>
         <meta property="og:title" content={post.title} />
@@ -94,7 +103,6 @@ const BlogDetail = () => {
         <meta property="og:image" content={post.cover_image_url} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="article" />
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || post.title} />
