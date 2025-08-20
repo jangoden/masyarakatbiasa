@@ -79,7 +79,7 @@ const LatestBlogs = () => {
         <div className="py-24 px-[5%] sm:px-[5%] lg:px-[10%]" data-aos="fade-up">
             <div className="text-center mb-12">
                 <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
-                    My Article
+                    My Blog
                 </h2>
                 <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
                     "A collection of my writings and reflections—sometimes sharing knowledge, sometimes personal confessions."

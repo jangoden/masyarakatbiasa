@@ -84,7 +84,7 @@ const Blog = () => {
           className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]"
           data-aos="zoom-in-up" data-aos-duration="600"
         >
-          My Article
+          My Blog
         </h2>
         <p
           className="mt-4 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg flex items-center justify-center gap-2"

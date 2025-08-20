@@ -102,7 +102,7 @@ const BlogDetail = () => {
         <meta property="og:description" content={post.excerpt || post.title} />
         <meta property="og:image" content={post.cover_image_url} />
         <meta property="og:url" content={pageUrl} />
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="blog" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="prerender-render-delay" content="1000" />
         <meta name="twitter:title" content={post.title} />
