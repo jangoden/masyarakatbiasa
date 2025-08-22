@@ -6,24 +6,21 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
-    
-    // Dapatkan lokasi saat ini dari URL
+
     const location = useLocation();
 
     const navItems = [
         { href: "#Home", label: "Home" },
         { href: "#About", label: "About" },
         { href: "#Portofolio", label: "Portofolio" },
-        { href: "/blog", label: "Blog" }, // Link baru ke halaman blog
+        { href: "/blog", label: "Blog" },
         { href: "#Contact", label: "Contact" },
     ];
 
-    // Efek untuk handle scroll & update active section HANYA di homepage
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
 
-            // Hanya jalankan logika scroll-spy di halaman utama
             if (location.pathname === '/') {
                 const sections = navItems.map(item => {
                     if (item.href.startsWith("#")) {
@@ -40,7 +37,7 @@ const Navbar = () => {
                 }).filter(Boolean);
 
                 const currentPosition = window.scrollY;
-                let newActiveSection = "Home"; // Default
+                let newActiveSection = "Home";
                 for (const section of sections) {
                     if (currentPosition >= section.offset && currentPosition < section.offset + section.height) {
                         newActiveSection = section.id;
@@ -54,20 +51,17 @@ const Navbar = () => {
         window.addEventListener("scroll", handleScroll);
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [location.pathname]); // Tambahkan location.pathname sebagai dependency
+    }, [location.pathname]);
 
-    // Efek untuk set active section berdasarkan URL
     useEffect(() => {
         if (location.pathname.startsWith('/blog')) {
             setActiveSection('Blog');
         } else if (location.pathname.startsWith('/project')) {
             setActiveSection('Portofolio');
         } else if (location.pathname === '/') {
-            // Biarkan scroll handler yang menentukan, atau set default ke Home
             setActiveSection('Home');
         }
     }, [location.pathname]);
-
 
     useEffect(() => {
         if (isOpen) {
@@ -80,7 +74,6 @@ const Navbar = () => {
 
     const scrollToSection = (e, href) => {
         e.preventDefault();
-        // Cek jika kita tidak di homepage, arahkan ke homepage dulu baru scroll
         if (location.pathname !== '/') {
             window.location.href = `/${href}`;
         } else {
@@ -98,7 +91,10 @@ const Navbar = () => {
 
     const NavLink = ({ item }) => {
         const isPageLink = item.href.startsWith('/');
-        const isActive = activeSection === item.label;
+        const isActive =
+            activeSection === item.label ||
+            (item.href === "/blog" && location.pathname.startsWith("/blog")) ||
+            (item.href === "/project" && location.pathname.startsWith("/project"));
 
         const linkClasses = "group relative px-1 py-2 text-sm font-medium";
         const spanClasses = `relative z-10 transition-colors duration-300 ${
@@ -111,7 +107,7 @@ const Navbar = () => {
                 ? "scale-x-100"
                 : "scale-x-0 group-hover:scale-x-100"
         }`;
-        
+
         if (isPageLink) {
             return (
                 <Link to={item.href} className={linkClasses} onClick={() => setIsOpen(false)}>
@@ -131,7 +127,10 @@ const Navbar = () => {
 
     const MobileNavLink = ({ item, index }) => {
         const isPageLink = item.href.startsWith('/');
-        const isActive = activeSection === item.label;
+        const isActive =
+            activeSection === item.label ||
+            (item.href === "/blog" && location.pathname.startsWith("/blog")) ||
+            (item.href === "/project" && location.pathname.startsWith("/project"));
 
         const linkClasses = `block px-4 py-3 text-lg font-medium transition-all duration-300 ease ${
             isActive
@@ -148,10 +147,9 @@ const Navbar = () => {
         if (isPageLink) {
             return <Link to={item.href} className={linkClasses} style={style} onClick={() => setIsOpen(false)}>{item.label}</Link>;
         }
-        
-        return <a href={item.href} onClick={(e) => scrollToSection(e, item.href)} className={linkClasses} style={style}>{item.label}</a>;
-    }
 
+        return <a href={item.href} onClick={(e) => scrollToSection(e, item.href)} className={linkClasses} style={style}>{item.label}</a>;
+    };
 
     return (
         <nav
@@ -165,7 +163,6 @@ const Navbar = () => {
         >
             <div className="mx-auto px-[5%] sm:px-[5%] lg:px-[10%]">
                 <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link
                             to="/"
@@ -179,15 +176,13 @@ const Navbar = () => {
                             masyarakatbiasa
                         </Link>
                     </div>
-        
-                    {/* Desktop Navigation */}
+
                     <div className="hidden md:block">
                         <div className="ml-8 flex items-center space-x-8">
                             {navItems.map((item) => <NavLink key={item.label} item={item} />)}
                         </div>
                     </div>
-        
-                    {/* Mobile Menu Button */}
+
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
@@ -200,8 +195,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        
-            {/* Mobile Menu */}
+
             <div
                 className={`md:hidden transition-all duration-300 ease-in-out ${
                     isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
