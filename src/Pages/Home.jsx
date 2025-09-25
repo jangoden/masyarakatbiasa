@@ -67,7 +67,7 @@ const PAUSE_DURATION = 2000;
 const WORDS = ["Informatics Student", "Tech Enthusiast", "Web Developer", "Front-End Developer", "Back-End Developer", "Full Stack Developer"];
 const SOCIAL_LINKS = [
   { icon: Github, link: "https://github.com/jangoden" },
-  { icon: Linkedin, link: "https://www.linkedin.com/in/jangoden/" },
+  { icon: Linkedin, link: "https://www.linkedin.com/in/dini-rahman-523352338" },
   { icon: Instagram, link: "https://www.instagram.com/denirrahman/" }
 ];
 
